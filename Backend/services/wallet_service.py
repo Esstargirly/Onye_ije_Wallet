@@ -36,3 +36,7 @@ def get_transaction_history(user_id, limit=20):
         .limit(limit)
         .all()
     )
+
+def check_sufficient_fare(user_id, fare_amount):
+    balance = get_balance(user_id)
+    return {"sufficient": balance >= fare_amount, "current_balance": balance}
