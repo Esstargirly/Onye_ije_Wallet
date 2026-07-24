@@ -97,12 +97,22 @@ SYSTEM_INSTRUCTION = (
 )
 
 def ask_gemma(user_message, user_id):
+    context_note = ""
+    pending = _pending_actions.get(user_id)
+    if pending and pending["type"] == "top_up":
+        context_note = (
+            f" (Context: there is a pending top-up of \u20a6{pending['amount']:.2f} "
+            f"awaiting the user's confirmation. If this message confirms it, "
+            f"call top_up_wallet with amount={pending['amount']}.)"
+        )
+
     contents = [
         types.Content(
             role="user",
-            parts=[types.Part(text=f"(user_id={user_id}) {user_message}")]
+            parts=[types.Part(text=f"(user_id={user_id}) {user_message}{context_note}")]
         )
     ]
+
 
     response = client.models.generate_content(
         model=MODEL,
