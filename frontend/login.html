@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Onye-ije Wallet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#1a3a00",
+                        "on-primary-fixed": "#0c2000",
+                        "inverse-primary": "#97d863",
+                        "primary-container": "#6dab3c",
+                        "on-primary-fixed-variant": "#265100",
+                        "secondary-fixed-dim": "#80da8a",
+                        "tertiary": "#3c6751",
+                        "secondary-container": "#98f4a1",
+                        "surface-container-highest": "#e4e2e1",
+                        "primary-fixed-dim": "#97d863",
+                        "tertiary-fixed": "#beedd1",
+                        "tertiary-container": "#78a58c",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed-dim": "#a3d1b6",
+                        "on-surface": "#1b1c1c",
+                        "surface-tint": "#356b00",
+                        "outline": "#727a68",
+                        "background": "#fbf9f8",
+                        "on-secondary-container": "#0e722f",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#002108",
+                        "surface-container-high": "#eae8e7",
+                        "primary-fixed": "#b2f57c",
+                        "on-secondary": "#ffffff",
+                        "primary": "#356b00",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eded",
+                        "surface-bright": "#fbf9f8",
+                        "surface": "#fbf9f8",
+                        "outline-variant": "#c1c9b5",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f3f0f0",
+                        "secondary": "#046e2b",
+                        "surface-variant": "#e4e2e1",
+                        "on-tertiary-container": "#0d3a27",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed-variant": "#244f3a",
+                        "secondary-fixed": "#9bf7a4",
+                        "inverse-surface": "#303030",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#00531e",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#42493a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base-unit": "4px",
+                        "stack-md": "24px",
+                        "stack-sm": "8px",
+                        "stack-lg": "40px",
+                        "gutter-md": "16px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Atkinson Hyperlegible Next"],
+                        "body-md": ["Atkinson Hyperlegible Next"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Atkinson Hyperlegible Next"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Atkinson Hyperlegible Next"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf9f8;
+            font-family: 'Atkinson Hyperlegible Next', sans-serif;
+        }
+        .login-card {
+            background: #ffffff;
+            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.06);
+        }
+        .btn-hover-effect:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center px-margin-mobile">
+<!-- Login Container -->
+<div class="w-full max-w-md flex flex-col items-center">
+<!-- Logo Branding Section -->
+<div class="mb-stack-lg text-center">
+<div class="w-32 h-32 mx-auto mb-stack-sm overflow-hidden rounded-xl">
+<img alt="Onye-ije Wallet Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD-qPYabmHEqELYSJUlZm7n6LKP09mm3toGkrQSD1w_-nGGf8ASnIU5RpuucwyoXQPr3LB1uzLaCCOZr79jxealj7rmhs_y5vP-PXxawDASukWAh94Rjvw1L4ggx68YQusSv6lhjOBKwHXBdeKHIFbKqWf-oltKRLTojjoHa-EGBmYlSwtKk1r79vbdFWZYdcjw8j6ow3osM1B-NJvyS_X3oONgVAcmYKyoxRpP0D8T5VxKcbNTKpVBsdeRSTtdwQB3j7UKwLgTbIg"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Onye-ije</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Your transit card, in your pocket.</p>
+</div>
+<!-- Login Form Card -->
+<div class="w-full login-card rounded-xl p-8 mb-stack-md">
+<!-- Error Message (hidden by default) -->
+<div class="mb-stack-md px-4 py-3 rounded-lg bg-error-container hidden" id="error-box">
+<p class="text-error text-body-md" id="error-text"></p>
+</div>
+<form class="space-y-stack-md" id="loginForm">
+<!-- Email Field -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="email">Email Address</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline-variant">mail</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-lg border-0 bg-surface-container-low focus:ring-2 focus:ring-primary text-body-md transition-all outline-none" id="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">Forgot?</a>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline-variant">lock</span>
+<input class="w-full pl-10 pr-10 py-3 rounded-lg border-0 bg-surface-container-low focus:ring-2 focus:ring-primary text-body-md transition-all outline-none" id="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-3 text-outline-variant hover:text-on-surface-variant transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="eye-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Login Button -->
+<button class="w-full bg-primary-container text-on-primary-container h-14 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 btn-hover-effect transition-all hover:opacity-90 active:scale-95 mt-4" type="submit">
+                    Log In
+                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Footer Navigation -->
+<div class="text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                New here? 
+                <a class="text-primary font-bold hover:underline ml-1" href="signup.html">Create an account.</a>
+</p>
+</div>
+<!-- Quick Transit Accessibility Link -->
+<div class="mt-stack-lg flex items-center gap-4 text-outline">
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest opacity-60">Enugu Transit</span>
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+</div>
+<div class="mt-stack-sm flex justify-center gap-stack-md">
+<div class="flex items-center gap-1 opacity-70">
+<span class="material-symbols-outlined text-[18px]">directions_bus</span>
+<span class="font-label-sm text-label-sm">Buses</span>
+</div>
+<div class="flex items-center gap-1 opacity-70">
+<span class="material-symbols-outlined text-[18px]">commute</span>
+<span class="font-label-sm text-label-sm">Rail</span>
+</div>
+</div>
+</div>
+<!-- Shared API helper -->
+<script src="js/api.js"></script>
+<!-- Script for simple micro-interactions + real login -->
+<script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye-icon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.textContent = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.textContent = 'visibility';
+            }
+        }
+
+        const errorBox = document.getElementById('error-box');
+        const errorText = document.getElementById('error-text');
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            errorBox.classList.add('hidden');
+
+            const btn = this.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+
+            // Show loading state
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Logging in...';
+
+            try {
+                const data = await apiPost('/auth/login', {
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                });
+                setToken(data.token);
+
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Success';
+                btn.classList.replace('bg-primary-container', 'bg-secondary');
+                btn.classList.replace('text-on-primary-container', 'text-white');
+
+                window.location.href = 'dashboard.html';
+            } catch (err) {
+                errorText.textContent = err.message === 'Invalid credentials'
+                    ? 'Incorrect email or password. Please try again.'
+                    : err.message;
+                errorBox.classList.remove('hidden');
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+            }
+        });
+    </script>
+</body></html>
