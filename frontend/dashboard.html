@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onye-ije Wallet Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#1a3a00",
+                    "on-primary-fixed": "#0c2000",
+                    "inverse-primary": "#97d863",
+                    "primary-container": "#6dab3c",
+                    "on-primary-fixed-variant": "#265100",
+                    "secondary-fixed-dim": "#80da8a",
+                    "tertiary": "#3c6751",
+                    "secondary-container": "#98f4a1",
+                    "surface-container-highest": "#e4e2e1",
+                    "primary-fixed-dim": "#97d863",
+                    "tertiary-fixed": "#beedd1",
+                    "tertiary-container": "#78a58c",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dcd9d9",
+                    "tertiary-fixed-dim": "#a3d1b6",
+                    "on-surface": "#1b1c1c",
+                    "surface-tint": "#356b00",
+                    "outline": "#727a68",
+                    "background": "#fbf9f8",
+                    "on-secondary-container": "#0e722f",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#002108",
+                    "surface-container-high": "#eae8e7",
+                    "primary-fixed": "#b2f57c",
+                    "on-secondary": "#ffffff",
+                    "primary": "#356b00",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#f0eded",
+                    "surface-bright": "#fbf9f8",
+                    "surface": "#fbf9f8",
+                    "outline-variant": "#c1c9b5",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0f0",
+                    "secondary": "#046e2b",
+                    "surface-variant": "#e4e2e1",
+                    "on-tertiary-container": "#0d3a27",
+                    "surface-container-low": "#f6f3f2",
+                    "on-tertiary-fixed-variant": "#244f3a",
+                    "secondary-fixed": "#9bf7a4",
+                    "inverse-surface": "#303030",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#00531e",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#002113",
+                    "on-background": "#1b1c1c",
+                    "on-surface-variant": "#42493a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base-unit": "4px",
+                    "stack-md": "24px",
+                    "stack-sm": "8px",
+                    "stack-lg": "40px",
+                    "gutter-md": "16px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Atkinson Hyperlegible Next"],
+                    "body-md": ["Atkinson Hyperlegible Next"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Atkinson Hyperlegible Next"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Atkinson Hyperlegible Next"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fbf9f8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen text-on-surface font-body-md">
+<!-- Top AppBar Shell -->
+<header class="bg-surface sticky top-0 z-40 flex justify-between items-center w-full px-margin-mobile h-14">
+<div class="flex items-center gap-2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Onye-ije</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A close-up professional headshot of a smiling young Nigerian professional in a clean, modern setting with soft warm lighting. The aesthetic is bright and civic-minded, reflecting the trust and efficiency of the Onye-ije transit system's digital ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD9G_EyCCQTxWnJJcIhpWK2wgOd_xCl5XsHWLfT-GL8MNXCvSK27Wb1Jx-_-UHLEnwz3yAzD2CYr4LMhKAUp-LA9xeX3XTI70BYQ50Cy4zH3ADQ-Imd085QZUBr_Pywpnz-i0Kw77Qqvp82HMvcP70POQd9WbRcxctn87blZ9VLlfdnIj2ApnGBDkbEbBFSl0tV1EMm4n367UcSDHTiQXYOyXvtVlToL0NMikbg0xy43uSAfxJ3H1c8gCR2HMhzzPHnO1jQGKMJSqC"/>
+</div>
+</div>
+</header>
+<main class="px-margin-mobile pt-stack-md pb-32 max-w-lg mx-auto">
+<!-- Wallet Balance Card (Civic Modernism - Trustworthy Depth) -->
+<section class="mb-stack-md">
+<div class="relative overflow-hidden bg-[#0C712E] rounded-3xl p-6 text-white shadow-lg h-48 flex flex-col justify-between">
+<!-- Abstract Design Overlay -->
+<div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl"></div>
+<div>
+<p class="font-label-md text-label-md opacity-90 mb-1">Wallet Balance</p>
+<h2 class="font-headline-lg-mobile text-[36px] leading-tight font-extrabold tracking-tight" id="balance-display">Loading...</h2>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex items-center gap-2 bg-black/10 px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm">Secured Account</span>
+</div>
+<span class="material-symbols-outlined text-4xl opacity-20">account_balance_wallet</span>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="grid grid-cols-2 gap-gutter-md mb-stack-lg">
+<button class="flex flex-col items-center justify-center gap-2 bg-primary-container text-on-primary-container h-24 rounded-2xl shadow-sm hover:bg-primary-container/90 active:scale-95 transition-all duration-150" id="topup-btn">
+<span class="material-symbols-outlined text-3xl">add_card</span>
+<span class="font-label-md text-label-md">Top Up</span>
+</button>
+<a class="flex flex-col items-center justify-center gap-2 bg-white text-primary h-24 rounded-2xl shadow-sm border border-outline-variant/30 hover:bg-surface-container-low active:scale-95 transition-all duration-150" href="assistant.html">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-md text-label-md">Ask Assistant</span>
+</a>
+</section>
+<!-- Recent Activity Section -->
+<section>
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Activity</h3>
+<a class="text-primary font-label-md text-label-md hover:underline" href="history.html">View All</a>
+</div>
+<div class="space-y-3" id="activity-list">
+<p class="text-on-surface-variant text-body-md text-center py-4">Loading activity...</p>
+</div>
+</section>
+<!-- Transit Banner (Soft Minimalist Chip Style) -->
+<section class="mt-stack-lg">
+<div class="bg-surface-container-low p-5 rounded-2xl flex items-center gap-4 border-l-4 border-primary">
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface">Enugu Transit Tip</h4>
+<p class="text-on-surface-variant text-[13px] leading-snug mt-1">Routes 4 &amp; 7 are experiencing light traffic near Independence Layout.</p>
+</div>
+<span class="material-symbols-outlined text-primary-container">info</span>
+</div>
+</section>
+</main>
+<!-- Scanner FAB (QR Context) -->
+<button class="fixed bottom-24 right-margin-mobile w-14 h-14 bg-secondary text-white rounded-2xl shadow-lg flex items-center justify-center active:scale-90 transition-all duration-200 z-50">
+<span class="material-symbols-outlined text-2xl">qr_code_scanner</span>
+</button>
+<!-- Bottom Navigation Bar (Mandatory Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-4 bg-surface-container-lowest shadow-[0_-4px_12px_0_rgba(0,0,0,0.06)] rounded-t-xl">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200 transition-all" href="dashboard.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Assistant -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 active:scale-90 duration-200 transition-all" href="assistant.html">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-label-sm">Assistant</span>
+</a>
+<!-- History -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 active:scale-90 duration-200 transition-all" href="history.html">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-sm text-label-sm">History</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 active:scale-90 duration-200 transition-all" href="#" id="logout-link">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+
+<!-- <script src="js/api.js"></script> -->
+
+<script>
+        if (!getToken()) {
+            window.location.href = 'login.html';
+        }
+
+        function formatNaira(amount) {
+            return '\u20a6' + Number(amount).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function timeAgo(isoString) {
+            const date = new Date(isoString);
+            return date.toLocaleDateString('en-NG', { day: 'numeric', month: 'short' }) + ', ' +
+                   date.toLocaleTimeString('en-NG', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        async function loadBalance() {
+            try {
+                const data = await apiGet('/wallet/balance');
+                document.getElementById('balance-display').textContent = formatNaira(data.balance);
+            } catch (err) {
+                // Likely an expired/invalid token — send back to login.
+                clearToken();
+                window.location.href = 'login.html';
+            }
+        }
+
+        async function loadActivity() {
+            const list = document.getElementById('activity-list');
+            try {
+                const transactions = await apiGet('/wallet/history');
+                if (transactions.length === 0) {
+                    list.innerHTML = '<p class="text-on-surface-variant text-body-md text-center py-4">No transactions yet — top up to get started.</p>';
+                    return;
+                }
+
+                list.innerHTML = transactions.slice(0, 3).map(t => {
+                    const isTopUp = t.type === 'top_up';
+                    const icon = isTopUp ? 'account_balance' : 'directions_bus';
+                    const iconBg = isTopUp ? 'bg-secondary-fixed text-on-secondary-fixed' : 'bg-tertiary-fixed text-on-tertiary-fixed';
+                    const amountClass = isTopUp ? 'text-secondary' : 'text-error';
+                    const sign = isTopUp ? '+ ' : '- ';
+                    return `
+                        <div class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.04)]">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 flex items-center justify-center ${iconBg} rounded-xl">
+                                    <span class="material-symbols-outlined">${icon}</span>
+                                </div>
+                                <div>
+                                    <p class="font-label-md text-label-md text-on-surface">${t.description || (isTopUp ? 'Wallet Top-up' : 'Fare Deduction')}</p>
+                                    <p class="font-label-sm text-label-sm text-on-surface-variant">${timeAgo(t.created_at)}</p>
+                                </div>
+                            </div>
+                            <p class="font-label-md text-label-md ${amountClass}">${sign}${formatNaira(t.amount)}</p>
+                        </div>
+                    `;
+                }).join('');
+            } catch (err) {
+                list.innerHTML = '<p class="text-error text-body-md text-center py-4">Could not load activity.</p>';
+            }
+        }
+
+        // Top Up: lightweight prompt-based flow until a dedicated
+        // top-up screen is wired in. Calls the real endpoint directly.
+        document.getElementById('topup-btn').addEventListener('click', async () => {
+            const amountStr = prompt('How much would you like to add (\u20a6)?');
+            if (!amountStr) return;
+            const amount = parseFloat(amountStr);
+            if (isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid amount.');
+                return;
+            }
+            try {
+                await apiPost('/wallet/topup', { amount });
+                await loadBalance();
+                await loadActivity();
+            } catch (err) {
+                alert('Top-up failed: ' + err.message);
+            }
+        });
+
+        document.getElementById('logout-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            clearToken();
+            window.location.href = 'login.html';
+        });
+
+        loadBalance();
+        loadActivity();
+    </script>
+</body></html>
