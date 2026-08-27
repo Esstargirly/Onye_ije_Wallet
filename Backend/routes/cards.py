@@ -19,3 +19,12 @@ def link_card():
     db.session.add(card)
     db.session.commit()
     return jsonify({"message": "Card linked successfully"}), 201
+
+@cards_bp.route("/status", methods=["GET"])
+@jwt_required()
+def card_status():
+    user_id = int(get_jwt_identity())
+    card = TransportCard.query.filter_by(user_id=user_id).first()
+    if not card:
+        return jsonify({"linked": False})
+    return jsonify({"linked": True, "card_number": card.card_number})

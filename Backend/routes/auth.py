@@ -36,3 +36,16 @@ def login():
 
     token = create_access_token(identity=str(user.id))
     return jsonify({"token": token, "user_id": user.id}), 200
+
+@auth_bp.route("/me", methods=["GET"])
+@jwt_required()
+def me():
+    user_id = int(get_jwt_identity())
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    return jsonify({
+        "full_name": user.full_name,
+        "email": user.email,
+        "phone": user.phone,
+    })
