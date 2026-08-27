@@ -198,14 +198,15 @@
 <span class="font-label-sm text-label-sm">History</span>
 </a>
 <!-- Profile -->
-<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 active:scale-90 duration-200 transition-all" href="#" id="logout-link">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 active:scale-90 duration-200 transition-all" href="profile.html">
 <span class="material-symbols-outlined">person</span>
 <span class="font-label-sm text-label-sm">Profile</span>
 </a>
 </nav>
-<!-- <script src="js/api.js"></script> -->
-
+<!-- Shared API helper -->
+<script src="js/api.js"></script>
 <script>
+        // Auth guard
         if (!getToken()) {
             window.location.href = 'login.html';
         }
@@ -285,12 +286,6 @@
             btn.addEventListener('click', () => {
                 sendMessage(btn.dataset.suggestion);
             });
-        });
-
-        document.getElementById('logout-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            clearToken();
-            window.location.href = 'login.html';
         });
 
         // Horizontal scroll with wheel for suggestion chips

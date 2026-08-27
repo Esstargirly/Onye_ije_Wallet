@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile - Onye-ije Wallet</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#1a3a00",
+                    "primary-container": "#6dab3c",
+                    "tertiary-fixed": "#beedd1",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#1b1c1c",
+                    "outline": "#727a68",
+                    "background": "#fbf9f8",
+                    "surface-container-high": "#eae8e7",
+                    "on-primary": "#ffffff",
+                    "secondary": "#046e2b",
+                    "surface-variant": "#e4e2e1",
+                    "on-tertiary-container": "#0d3a27",
+                    "surface-container-low": "#f6f3f2",
+                    "error": "#ba1a1a",
+                    "on-background": "#1b1c1c",
+                    "on-surface-variant": "#42493a",
+                    "primary": "#356b00",
+                    "surface": "#fbf9f8",
+                    "outline-variant": "#c1c9b5",
+                    "surface-container-lowest-2": "#ffffff"
+            },
+            "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+            "spacing": { "stack-md": "24px", "stack-sm": "8px", "stack-lg": "40px", "gutter-md": "16px", "margin-mobile": "20px" },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Atkinson Hyperlegible Next"],
+                    "body-md": ["Atkinson Hyperlegible Next"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Atkinson Hyperlegible Next"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      body { background-color: #fbf9f8; -webkit-tap-highlight-color: transparent; }
+    </style>
+</head>
+<body class="min-h-screen text-on-surface font-body-md pb-24">
+<header class="bg-surface sticky top-0 z-40 flex items-center gap-4 w-full px-margin-mobile h-14">
+<button class="text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150" onclick="window.location.href='dashboard.html'">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Profile</h1>
+</header>
+<main class="px-margin-mobile pt-stack-md max-w-lg mx-auto">
+<!-- Identity Card -->
+<section class="bg-white rounded-2xl p-6 shadow-[0_4px_12px_rgba(0,0,0,0.04)] mb-stack-md text-center">
+<div class="w-20 h-20 mx-auto rounded-full bg-primary-container/20 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-4xl">person</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface" id="profile-name">Loading...</h2>
+<p class="text-on-surface-variant font-body-md mt-1" id="profile-email">—</p>
+<p class="text-on-surface-variant font-label-sm mt-1" id="profile-phone"></p>
+</section>
+<!-- Wallet Summary -->
+<section class="bg-white rounded-2xl p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] mb-stack-md flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+<span class="font-label-md text-label-md text-on-surface">Wallet Balance</span>
+</div>
+<span class="font-headline-md text-headline-md text-primary" id="profile-balance">—</span>
+</section>
+<!-- Transport Card Status -->
+<section class="bg-white rounded-2xl p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] mb-stack-md" id="card-status-section">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">contactless</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Transport Card</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant" id="card-status-text">Checking...</p>
+</div>
+</div>
+<a class="text-primary font-label-md text-label-md hover:underline" href="link-card.html" id="card-action-link">Link Card</a>
+</div>
+</section>
+<!-- Actions -->
+<section class="space-y-3">
+<a class="w-full flex items-center justify-between bg-white rounded-2xl p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:bg-surface-container-low transition-colors" href="history.html">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="font-label-md text-label-md text-on-surface">Transaction History</span>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+<button class="w-full flex items-center justify-between bg-white rounded-2xl p-5 shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:bg-error-container/50 transition-colors" id="logout-btn">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="font-label-md text-label-md text-error">Log Out</span>
+</div>
+</button>
+</section>
+</main>
+<!-- Bottom Navigation Bar (matches other screens) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-4 bg-surface-container-lowest shadow-[0_-4px_12px_0_rgba(0,0,0,0.06)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 active:scale-90 duration-200 transition-all" href="dashboard.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 active:scale-90 duration-200 transition-all" href="assistant.html">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-label-sm">Assistant</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 active:scale-90 duration-200 transition-all" href="history.html">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-sm text-label-sm">History</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200 transition-all" href="profile.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script src="js/api.js"></script>
+<script>
+        if (!getToken()) {
+            window.location.href = 'login.html';
+        }
+
+        function formatNaira(amount) {
+            return '\u20a6' + Number(amount).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        async function loadProfile() {
+            try {
+                const [user, balance, cardStatus] = await Promise.all([
+                    apiGet('/auth/me'),
+                    apiGet('/wallet/balance'),
+                    apiGet('/cards/status'),
+                ]);
+
+                document.getElementById('profile-name').textContent = user.full_name;
+                document.getElementById('profile-email').textContent = user.email;
+                document.getElementById('profile-phone').textContent = user.phone || '';
+
+                document.getElementById('profile-balance').textContent = formatNaira(balance.balance);
+
+                const statusText = document.getElementById('card-status-text');
+                const actionLink = document.getElementById('card-action-link');
+                if (cardStatus.linked) {
+                    statusText.textContent = cardStatus.card_number;
+                    actionLink.classList.add('hidden');
+                } else {
+                    statusText.textContent = 'No card linked yet';
+                    actionLink.textContent = 'Link Card';
+                }
+            } catch (err) {
+                clearToken();
+                window.location.href = 'login.html';
+            }
+        }
+
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            clearToken();
+            window.location.href = 'login.html';
+        });
+
+        loadProfile();
+    </script>
+</body></html>
