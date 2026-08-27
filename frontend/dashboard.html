@@ -155,10 +155,10 @@
 </section>
 <!-- Quick Actions -->
 <section class="grid grid-cols-2 gap-gutter-md mb-stack-lg">
-<button class="flex flex-col items-center justify-center gap-2 bg-primary-container text-on-primary-container h-24 rounded-2xl shadow-sm hover:bg-primary-container/90 active:scale-95 transition-all duration-150" id="topup-btn">
+<a class="flex flex-col items-center justify-center gap-2 bg-primary-container text-on-primary-container h-24 rounded-2xl shadow-sm hover:bg-primary-container/90 active:scale-95 transition-all duration-150" href="topup.html">
 <span class="material-symbols-outlined text-3xl">add_card</span>
 <span class="font-label-md text-label-md">Top Up</span>
-</button>
+</a>
 <a class="flex flex-col items-center justify-center gap-2 bg-white text-primary h-24 rounded-2xl shadow-sm border border-outline-variant/30 hover:bg-surface-container-low active:scale-95 transition-all duration-150" href="assistant.html">
 <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
 <span class="font-label-md text-label-md">Ask Assistant</span>
@@ -212,10 +212,12 @@
 <span class="font-label-sm text-label-sm">Profile</span>
 </a>
 </nav>
-
-<!-- <script src="js/api.js"></script> -->
-
+<!-- Shared API helper -->
+<script src="js/api.js"></script>
 <script>
+        // Auth guard: bounce to login if there's no token at all.
+        // (An expired-but-present token will simply fail the fetch below,
+        // which we also send back to login.)
         if (!getToken()) {
             window.location.href = 'login.html';
         }
@@ -275,25 +277,6 @@
                 list.innerHTML = '<p class="text-error text-body-md text-center py-4">Could not load activity.</p>';
             }
         }
-
-        // Top Up: lightweight prompt-based flow until a dedicated
-        // top-up screen is wired in. Calls the real endpoint directly.
-        document.getElementById('topup-btn').addEventListener('click', async () => {
-            const amountStr = prompt('How much would you like to add (\u20a6)?');
-            if (!amountStr) return;
-            const amount = parseFloat(amountStr);
-            if (isNaN(amount) || amount <= 0) {
-                alert('Please enter a valid amount.');
-                return;
-            }
-            try {
-                await apiPost('/wallet/topup', { amount });
-                await loadBalance();
-                await loadActivity();
-            } catch (err) {
-                alert('Top-up failed: ' + err.message);
-            }
-        });
 
         document.getElementById('logout-link').addEventListener('click', (e) => {
             e.preventDefault();

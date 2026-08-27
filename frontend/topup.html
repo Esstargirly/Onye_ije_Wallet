@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onye-ije | Top-up Wallet</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#1a3a00",
+                    "on-primary-fixed": "#0c2000",
+                    "inverse-primary": "#97d863",
+                    "primary-container": "#6dab3c",
+                    "on-primary-fixed-variant": "#265100",
+                    "secondary-fixed-dim": "#80da8a",
+                    "tertiary": "#3c6751",
+                    "secondary-container": "#98f4a1",
+                    "surface-container-highest": "#e4e2e1",
+                    "primary-fixed-dim": "#97d863",
+                    "tertiary-fixed": "#beedd1",
+                    "tertiary-container": "#78a58c",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#dcd9d9",
+                    "tertiary-fixed-dim": "#a3d1b6",
+                    "on-surface": "#1b1c1c",
+                    "surface-tint": "#356b00",
+                    "outline": "#727a68",
+                    "background": "#fbf9f8",
+                    "on-secondary-container": "#0e722f",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#002108",
+                    "surface-container-high": "#eae8e7",
+                    "primary-fixed": "#b2f57c",
+                    "on-secondary": "#ffffff",
+                    "primary": "#356b00",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#f0eded",
+                    "surface-bright": "#fbf9f8",
+                    "surface": "#fbf9f8",
+                    "outline-variant": "#c1c9b5",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f3f0f0",
+                    "secondary": "#046e2b",
+                    "surface-variant": "#e4e2e1",
+                    "on-tertiary-container": "#0d3a27",
+                    "surface-container-low": "#f6f3f2",
+                    "on-tertiary-fixed-variant": "#244f3a",
+                    "secondary-fixed": "#9bf7a4",
+                    "inverse-surface": "#303030",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#00531e",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#002113",
+                    "on-background": "#1b1c1c",
+                    "on-surface-variant": "#42493a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base-unit": "4px",
+                    "stack-md": "24px",
+                    "stack-sm": "8px",
+                    "stack-lg": "40px",
+                    "gutter-md": "16px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Atkinson Hyperlegible Next"],
+                    "body-md": ["Atkinson Hyperlegible Next"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Atkinson Hyperlegible Next"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Atkinson Hyperlegible Next"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-chip {
+            background-color: #6dab3c !important;
+            color: #ffffff !important;
+        }
+        .modal-overlay {
+            backdrop-filter: blur(4px);
+            transition: opacity 0.3s ease;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar -->
+<header class="bg-surface sticky top-0 z-40 flex justify-between items-center w-full px-margin-mobile h-14">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-150" onclick="window.location.href='dashboard.html'">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary">Onye-ije</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A sharp, studio-lit professional headshot of a young Nigerian commuter smiling, with soft focus greenery in the background, mirroring the primary green and white brand colors. The lighting is warm and natural, emphasizing a clean and approachable urban identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcXVQOH-Hfx5Lqcbiiz7DJp1UsG9Tz06bUXaULJegZ2NnQOAg9RVK_gHzfuPIC-FKR5WmluiIIyNxu_oSSq0x7Z_VI0ZCxe6NhXSZZF5lQ_dO9a_7tJXZfpJH3V3eCMBCbEDEDb1gHMdXPscTZP87xvhNKu98sjoMIS8wS-DZJPDHIz9kyGn6IAtHX0OerRP7BhWHDsgLNMlIxQanr3-u0yHRVx4sE88ZyMY0tIVRP2wwT4Fxt5tbTFIjXfpxu1iWRMBrM_12iP18C"/>
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin-mobile pt-stack-md pb-stack-lg min-h-[calc(100vh-56px)] flex flex-col">
+<!-- Main Heading -->
+<div class="mb-stack-md">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Add Money to Wallet</h2>
+<p class="text-on-surface-variant font-body-md">Top up your balance to keep moving across Enugu without delays.</p>
+</div>
+<!-- Wallet Card (Visual Balance Reference) -->
+<div class="bg-primary-container text-on-primary-container p-6 rounded-xl shadow-lg mb-stack-md relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-label-md block opacity-90 mb-1">Current Balance</span>
+<span class="font-headline-lg text-headline-lg" id="current-balance">Loading...</span>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-on-primary-container/10 rounded-full"></div>
+</div>
+<!-- Error Message (hidden by default) -->
+<div class="px-4 py-3 rounded-xl bg-error-container hidden mb-stack-md" id="error-box">
+<p class="text-error text-body-md" id="error-text"></p>
+</div>
+<!-- Selection & Input Section -->
+<section class="flex-grow">
+<div class="mb-stack-md">
+<label class="font-label-md text-on-surface-variant block mb-stack-sm">Select Amount</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="bg-surface-container-low text-on-surface font-label-md py-4 rounded-xl border border-transparent hover:bg-surface-container-high transition-all active:scale-95 duration-150" onclick="selectAmount(500, this)" type="button">
+                        ₦500
+                    </button>
+<button class="bg-surface-container-low text-on-surface font-label-md py-4 rounded-xl border border-transparent hover:bg-surface-container-high transition-all active:scale-95 duration-150" onclick="selectAmount(1000, this)" type="button">
+                        ₦1,000
+                    </button>
+<button class="bg-surface-container-low text-on-surface font-label-md py-4 rounded-xl border border-transparent hover:bg-surface-container-high transition-all active:scale-95 duration-150" onclick="selectAmount(2000, this)" type="button">
+                        ₦2,000
+                    </button>
+<button class="bg-surface-container-low text-on-surface font-label-md py-4 rounded-xl border border-transparent hover:bg-surface-container-high transition-all active:scale-95 duration-150" onclick="selectAmount(5000, this)" type="button">
+                        ₦5,000
+                    </button>
+</div>
+</div>
+<div class="mb-stack-md">
+<label class="font-label-md text-on-surface-variant block mb-stack-sm" for="custom-amount">Or enter custom amount</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-headline-md text-on-surface-variant">₦</span>
+<input class="w-full h-14 pl-10 pr-4 bg-surface-container-low border-none rounded-xl font-headline-md text-on-surface focus:ring-2 focus:ring-primary transition-all placeholder:text-outline-variant" id="custom-amount" oninput="clearChips()" placeholder="0.00" type="number"/>
+</div>
+</div>
+</section>
+<!-- Continue Button -->
+<button class="w-full h-14 bg-primary text-on-primary font-label-md rounded-xl shadow-lg active:scale-[0.98] transition-all disabled:opacity-30 disabled:pointer-events-none mt-auto" disabled="" id="continue-btn" onclick="openConfirmation()">
+            Continue
+        </button>
+</main>
+<!-- Confirmation Modal Overlay -->
+<div class="hidden fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-margin-mobile" id="confirmation-modal">
+<div class="absolute inset-0 bg-on-background/40 modal-overlay" onclick="closeConfirmation()"></div>
+<div class="relative bg-surface w-full md:max-w-sm rounded-t-3xl md:rounded-3xl p-6 shadow-2xl animate-in slide-in-from-bottom duration-300">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full mx-auto mb-6 md:hidden"></div>
+<div class="text-center mb-8">
+<div class="w-16 h-16 bg-primary-container/20 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-4xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-2">Confirm Top-up</h3>
+<p class="text-on-surface-variant font-body-md">Are you sure you want to add <span class="font-bold text-on-surface" id="display-amount">₦0</span> to your Onye-ije wallet?</p>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full h-14 bg-primary text-on-primary font-label-md rounded-xl active:scale-[0.98] transition-all" id="confirm-btn" onclick="processTopUp()">
+                    Confirm
+                </button>
+<button class="w-full h-14 bg-surface-variant/30 text-on-surface-variant font-label-md rounded-xl hover:bg-surface-variant/50 transition-all" onclick="closeConfirmation()">
+                    Cancel
+                </button>
+</div>
+</div>
+</div>
+<!-- Success Feedback (Floating Toast) -->
+<div class="hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-secondary text-on-secondary px-6 py-3 rounded-full shadow-lg flex items-center gap-2 animate-bounce" id="success-toast">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span class="font-label-md">Wallet updated successfully!</span>
+</div>
+<!-- Shared API helper -->
+<script src="js/api.js"></script>
+<script>
+        // Auth guard
+        if (!getToken()) {
+            window.location.href = 'login.html';
+        }
+
+        let selectedAmountValue = 0;
+        const customInput = document.getElementById('custom-amount');
+        const continueBtn = document.getElementById('continue-btn');
+        const confirmBtn = document.getElementById('confirm-btn');
+        const modal = document.getElementById('confirmation-modal');
+        const displayAmountSpan = document.getElementById('display-amount');
+        const toast = document.getElementById('success-toast');
+        const errorBox = document.getElementById('error-box');
+        const errorText = document.getElementById('error-text');
+        const currentBalanceEl = document.getElementById('current-balance');
+
+        function formatNaira(amount) {
+            return '\u20a6' + Number(amount).toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        async function loadBalance() {
+            try {
+                const data = await apiGet('/wallet/balance');
+                currentBalanceEl.textContent = formatNaira(data.balance);
+            } catch (err) {
+                clearToken();
+                window.location.href = 'login.html';
+            }
+        }
+
+        function selectAmount(amount, element) {
+            clearChips();
+            element.classList.add('active-chip');
+            customInput.value = '';
+            selectedAmountValue = amount;
+            validate();
+        }
+
+        function clearChips() {
+            document.querySelectorAll('.active-chip').forEach(el => el.classList.remove('active-chip'));
+            selectedAmountValue = 0;
+            validate();
+        }
+
+        function validate() {
+            const amount = parseFloat(customInput.value) || selectedAmountValue;
+            continueBtn.disabled = !(amount > 0);
+        }
+
+        function openConfirmation() {
+            const amount = parseFloat(customInput.value) || selectedAmountValue;
+            displayAmountSpan.textContent = formatNaira(amount);
+            errorBox.classList.add('hidden');
+            modal.classList.remove('hidden');
+        }
+
+        function closeConfirmation() {
+            modal.classList.add('hidden');
+        }
+
+        async function processTopUp() {
+            const amount = parseFloat(customInput.value) || selectedAmountValue;
+            const originalContent = confirmBtn.innerHTML;
+
+            confirmBtn.disabled = true;
+            confirmBtn.textContent = 'Processing...';
+
+            try {
+                await apiPost('/wallet/topup', { amount });
+                closeConfirmation();
+                await loadBalance();
+
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    customInput.value = '';
+                    clearChips();
+                }, 3000);
+            } catch (err) {
+                closeConfirmation();
+                errorText.textContent = 'Top-up failed: ' + err.message;
+                errorBox.classList.remove('hidden');
+            } finally {
+                confirmBtn.disabled = false;
+                confirmBtn.innerHTML = originalContent;
+            }
+        }
+
+        // Handle Enter key on input
+        customInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !continueBtn.disabled) {
+                openConfirmation();
+            }
+        });
+
+        loadBalance();
+    </script>
+</body></html>
