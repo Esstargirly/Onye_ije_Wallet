@@ -1,4 +1,4 @@
-const API_BASE = "https://grand-contentment-production-a564.up.railway.app/";
+const API_BASE = "https://grand-contentment-production-a564.up.railway.app/api";
 
 function getToken() {
   return localStorage.getItem("token");
