@@ -1,4 +1,4 @@
-const API_BASE = "/api"; // adjust to your deployed backend URL when live
+const API_BASE = "http://127.0.0.1:5000/api";
 
 function getToken() {
   return localStorage.getItem("token");

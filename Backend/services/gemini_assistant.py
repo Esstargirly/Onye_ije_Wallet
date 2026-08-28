@@ -7,11 +7,14 @@ from google.genai import types
 from services import wallet_service
 
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
-MODEL = "gemma-4-26b-a4b-it"
+MODEL = "gemini-3.6-flash"
 
+# In-memory store for actions awaiting user confirmation, keyed by user_id.
+# MVP-only choice: fine for a hackathon demo (single process, short-lived
+# state). In production this belongs in the DB or a proper session store.
 _pending_actions = {}
 
-# Tool definitions: what Gemma is allowed to call
+# Tool definitions: what the assistant is allowed to call
 check_balance_fn = {
     "name": "check_balance",
     "description": "Check the user's current wallet balance in Naira.",
@@ -57,9 +60,18 @@ tools = types.Tool(function_declarations=[
 ])
 
 
-# Executing whatever Gemma decides to call
+# Executing whatever the model decides to call
 
 def execute_function(name, args):
+    """
+    Route the assistant's function call into the real wallet_service.
+
+    top_up_wallet never executes on the first call — it stages the
+    action and asks the model to relay a confirmation question to the
+    user. Only a second, confirmed call actually moves money.
+    check_balance and check_sufficient_fare are read-only and execute
+    immediately.
+    """
     try:
         if name == "check_balance":
             return {"balance": wallet_service.get_balance(args["user_id"])}
@@ -96,7 +108,17 @@ SYSTEM_INSTRUCTION = (
     "English suited for a mobile chat screen."
 )
 
-def ask_gemma(user_message, user_id):
+
+def ask_assistant(user_message, user_id):
+    """
+    Send one user message through Gemini with native function calling.
+
+    Two-call pattern for money-moving actions: if the model's function
+    call comes back with requires_confirmation, this returns the
+    model's own confirmation question as the reply. The caller sends
+    the user's next message the same way; execute_function() recognizes
+    the repeated request and completes it.
+    """
     context_note = ""
     pending = _pending_actions.get(user_id)
     if pending and pending["type"] == "top_up":
@@ -112,7 +134,6 @@ def ask_gemma(user_message, user_id):
             parts=[types.Part(text=f"(user_id={user_id}) {user_message}{context_note}")]
         )
     ]
-
 
     response = client.models.generate_content(
         model=MODEL,

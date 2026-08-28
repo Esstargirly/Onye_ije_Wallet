@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from config import Config
 from extensions import db, jwt
 from models import User, Wallet, TransportCard, Transaction
@@ -9,6 +10,8 @@ from routes.assistant import assistant_bp
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+CORS(app)
 
 db.init_app(app)
 jwt.init_app(app)
